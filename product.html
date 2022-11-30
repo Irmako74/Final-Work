@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="styleP.css">
+
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>E-commerce</title>
+</head>
+
+<nav>
+  <div class="navTop">
+      <div class="navItem">
+          <img src="./images/logo.png" alt="" />
+      </div>
+      <div class="navItem">
+          <nav>
+              <ul class="menu">
+                  <li><a href="">Main</a></li>
+                  <li><a href="">Products</a></li>
+                  <li><a href="">Offers</a></li>
+                  <li><a href="">Contact</a></li>
+              </ul>
+          </nav>
+      </div>
+      <div class="navItem">
+        
+          <img src="./images/log-in.svg" width="24" height="24" class="shopping">
+          <img src="./images/search.svg" width="24" height="24" class="shopping">
+          <img src="./images/shopping-cart.svg" width="24" height="24" class="shopping">
+      </div>
+  </div>
+</nav>
+
+<body>
+
+    <div class="card-wrapper">
+      <div class = "card">
+          <div class = "product-imgs">
+            <div class = "img-display">
+              <div class = "img-showcase">
+                <img src = "./images/product-1.jpg" alt="Nike">
+                <img src = "./images/product-2.jpg" alt="Nike">
+                <img src = "./images/product-3.jpg" alt="Nike">
+                <img src = "./images/product-4.jpg" alt="Nike">
+              </div>
+            </div>
+
+            <div class = "img-select">
+              <div class = "img-item">
+                <a href = "#" data-id = "1">
+                  <img src = "./images/product-1.jpg" alt="shoe images">
+                </a>
+              </div>
+
+              <div class = "img-item">
+                <a href = "#" data-id = "2">
+                  <img src = "./images/product-2.jpg" alt="shoe images">
+                </a>
+              </div>
+
+              <div class = "img-item">
+                <a href = "#" data-id = "3">
+                  <img src = "./images/product-3.jpg" alt="shoe images">
+                </a>
+              </div>
+
+              <div class = "img-item">
+                <a href = "#" data-id = "4">
+                  <img src = "./images/product-4.jpg" alt="shoe images">
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class = "product-content">
+            <h2 class = "product-title">Nike Shoes</h2>
+            <a href = "#" class = "product-link"> Visit Nike Store</a>
+            <div class = "product-rating">
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star"></i>
+              <i class = "fas fa-star-half-alt"></i>
+              <span>4.7(21)</span>
+            </div>
+            <div class = "product-price">
+              <p class = "last-price">Old Price: <span>$258</span></p>
+              <p class = "new-price">New Price: <span>$180</span></p>
+            </div>
+            <div class = "product-detail">
+              <h2>THESE RUNNING SHOES ARE MADE <br> 
+                IN PART WITH RECYCLED MATERIALS.</h2>
+              <p>Made with a series of recycled materials, <br>
+                this upper features at least 50% recycled content. <br>
+                This product represents just one of our <br>
+                solutions to help end plastic waste.</p>
+                <ul>
+                  <li>Color: <span>Black</span></li>
+                  <li>Available: <span>in stock</span></li>
+                  <li>Color: <span>Shoes</span></li>
+                  <li>Shipping Area: <span>All over the world</span></li>
+                  <li>Shipping Fee: <span>Free</span></li>
+                </ul>
+            </div>
+            <div class = "purchase-info">
+              <input type = "number" min = "0" value = "1">
+              <button type = "button" class = "btn"> Add to cart 
+              <i class = "fas fa-shopping-cart"></i></button>
+              <button type = "button" class = "btn">Compare</button>
+            </div>
+
+            <div class = "social-links">
+              <p>Share At:</p>
+              <a href="#">
+                <i class = "fab fa-facebook-f"></i>
+              </a>
+              <a href="#">
+                <i class = "fab fa-twitter"></i>
+              </a>
+              <a href="#">
+                <i class = "fab fa-instagram"></i>
+              </a>
+              <a href="#">
+                <i class = "fab fa-whatsapp"></i>
+              </a>
+              <a href="#">
+                <i class = "fab fa-pinterest"></i>
+              </a>
+            </div>
+          </div>
+      </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+     <script src="ScriptP.js"></script>
+</body>
+
+
+</html>

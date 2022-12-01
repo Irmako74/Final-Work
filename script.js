@@ -1,3 +1,5 @@
+const products = document.getElementById("products");
+const popup_container = document.querySelector('.popup-container')
 const categories = [
   { "id": 1, "name": "Dumplings", "image": "https://englishlib.org/dictionary/img/wlibrary/p/60281165e19a76.67613270.jpg" },
   { "id": 2, "name": "Electronics", "image": "https://api.lorem.space/image/watch?w=640&h=480&r=7597" },
@@ -5,6 +7,13 @@ const categories = [
   { "id": 4, "name": "Shoes", "image": "https://api.lorem.space/image/shoes?w=640&h=480&r=2838" },
   { "id": 5, "name": "Others", "image": "https://api.lorem.space/image?w=640&h=480&r=8949" }
 ]
+
+function add_click_effect_to_card (product) {
+  product.forEach(product => {
+    product.addEventListener('click', () => show_popup(product))
+  });
+}
+
 
 const navBottomEl = document.getElementById(`navBottom`);
 
@@ -34,6 +43,7 @@ function setCategory() {
         console.log(selectedCategory)
         getProducts('https://api.escuelajs.co/api/v1/products' + '&categories='+encodeURI
         (selectedCategory.join(',')));
+        
     })
     navBottomEl.append(t);
   })
@@ -59,8 +69,8 @@ document.addEventListener('DOMContentLoaded', function () {
             
             <div class="product-price-container">
                 <h3 class="product-price">$${response[i].price}</h3>
-                <a href="#!" data-productId="${response[i].id}" 
-                class="add-to-cart"><ion-icon name="cart-outline"></ion-icon></a>
+                <a href="popup.html" data-productId="${response[i].id}" 
+                class="add-to-cart">Quick View</ion-icon></a>
             </div>
             </div>
         </div>
@@ -69,3 +79,14 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   fetchProducts('https://api.escuelajs.co/api/v1/products');
 });
+
+//popup
+async function get_product_by_id (id) {
+  const resp = await fetch(`https://api.escuelajs.co/api/v1/products/${id}`)
+  const respData = await resp.json()
+  return respData.results
+}
+
+function show_popup () {
+  popup_container.classList.add('show-popup')
+}

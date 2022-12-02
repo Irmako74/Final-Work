@@ -1,5 +1,3 @@
-const products = document.getElementById("products");
-const popup_container = document.querySelector('.popup-container')
 const categories = [
   { "id": 1, "name": "Dumplings", "image": "https://englishlib.org/dictionary/img/wlibrary/p/60281165e19a76.67613270.jpg" },
   { "id": 2, "name": "Electronics", "image": "https://api.lorem.space/image/watch?w=640&h=480&r=7597" },
@@ -8,49 +6,11 @@ const categories = [
   { "id": 5, "name": "Others", "image": "https://api.lorem.space/image?w=640&h=480&r=8949" }
 ]
 
-function add_click_effect_to_card (product) {
-  product.forEach(product => {
-    product.addEventListener('click', () => show_popup(product))
-  });
-}
-
-
-const navBottomEl = document.getElementById(`navBottom`);
-
-var selectedCategory = []
-setCategory();
-function setCategory() {
-  navBottomEl.innerHTML = ``;
-  categories.forEach(category => {
-    const t = document.createElement('div');
-    t.classList.add('menuItem');
-    t.id = category.id;
-    t.innerText = category.name;
-    t.addEventListener('click', () => {
-        if(selectedCategory.length ==0) {
-          selectedCategory.push(category.id);
-        } else {
-          if(selectedCategory.includes(category.id)){
-            selectedCategory.forEach((id, idx) => {
-              if(id == category.id){
-                selectedCategory.splice(idx, 1);
-              }
-            }) 
-          }else{
-            selectedCategory.push(category.id);
-          }
-        }
-        console.log(selectedCategory)
-        getProducts('https://api.escuelajs.co/api/v1/products' + '&categories='+encodeURI
-        (selectedCategory.join(',')));
-        
-    })
-    navBottomEl.append(t);
-  })
-}
+// const navBottomEl = document.getElementById(`navBottom`);
 
 document.addEventListener('DOMContentLoaded', function () {
   let products = document.querySelector(".products");
+  
     async function fetchProducts(url) {
     let data = await fetch(url);
     let response = await data.json();
@@ -70,23 +30,45 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="product-price-container">
                 <h3 class="product-price">$${response[i].price}</h3>
                 <a href="popup.html" data-productId="${response[i].id}" 
-                class="add-to-cart">Quick View</ion-icon></a>
+                class="add-to-cart">Quick View</a>
             </div>
             </div>
         </div>
         `;
+  
+
     }
+
   }
-  fetchProducts('https://api.escuelajs.co/api/v1/products');
+  fetchProducts('https://api.escuelajs.co/api/v1/products?limit=20&offset=5');
 });
 
-//popup
-async function get_product_by_id (id) {
-  const resp = await fetch(`https://api.escuelajs.co/api/v1/products/${id}`)
-  const respData = await resp.json()
-  return respData.results
+// get data from https://api.escuelajs.co/api/v1/categories?limit=4
+// and render it in the navBottom element
+let navBottom = document.getElementById('navBottom');
+async function fetchProducts(url) {
+  let data = await fetch(url);
+  let response = await data.json();
+  for (let i = 0; i < response.length; i++) {
+    let name = response[i].name;
+    navBottom.innerHTML += `
+      <h3 class="menuItem">${name}</h3>
+    `;
+  }
+  // on navBottom click, filter products by category
+  navBottom.addEventListener('click', (e) => {
+    let products = document.querySelectorAll('.product');
+    let category = e.target.innerHTML;
+    products.forEach((product) => {
+      let productCategory = product.querySelector('.product-category').innerHTML;
+      if (productCategory !== category) {
+        product.style.display = 'none';
+      } else {
+        product.style.display = 'flex';
+      }
+    });
+  }
+  );
 }
+fetchProducts('https://api.escuelajs.co/api/v1/categories?limit=4');
 
-function show_popup () {
-  popup_container.classList.add('show-popup')
-}
